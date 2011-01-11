@@ -210,7 +210,8 @@
 	}
 	
 	//Draw Bar
-	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect: frame xRadius: 2 yRadius: 2];
+	NSBezierPath *path = [[NSBezierPath alloc] init];
+	[path appendBezierPathWithRoundedRect:frame xRadius:2 yRadius:2];
 	
 	if([self isEnabled]) {
 		
@@ -227,6 +228,7 @@
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledStrokeColor] set];
 		[path stroke];
 	}
+	[path release];
 }
 
 - (void)drawVerticalBarInFrame:(NSRect)frame {
@@ -303,13 +305,16 @@
 	}
 	
 	//Draw Bar
-	NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect: frame xRadius: 2 yRadius: 2];
+	NSBezierPath *path = [[NSBezierPath alloc] init];
+	[path appendBezierPathWithRoundedRect: frame xRadius: 2 yRadius: 2];
 	
 	[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] sliderTrackColor] set];
 	[path fill];
 	
 	[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
 	[path stroke];
+	
+	[path release];
 }
 
 - (void)drawHorizontalKnobInFrame:(NSRect)frame {
