@@ -264,7 +264,9 @@
 	NSMutableDictionary *textAttributes = [[NSMutableDictionary alloc] initWithCapacity: 0];
 	
 	[textAttributes setValue: [NSFont controlContentFontOfSize: [NSFont systemFontSizeForControlSize: [self controlSize]]] forKey: NSFontAttributeName];
-	if([self isEnabled])
+    
+    //--Added 2010-06-28 by Alun Bestor to show disabled segments as properly disabled
+	if([self isEnabled] && [self isEnabledForSegment: segment])
 	{
 		[textAttributes setValue: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] textColor] forKey: NSForegroundColorAttributeName];
 	}

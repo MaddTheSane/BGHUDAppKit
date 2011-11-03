@@ -248,7 +248,7 @@
 				
 				[gradient release];
 				
-				[[NSGraphicsContext currentContext] setShouldAntialias: NO];
+				//[[NSGraphicsContext currentContext] setShouldAntialias: NO];
 				
 				[[self borderColor] set];
 				

@@ -210,6 +210,16 @@
 							 range: NSMakeRange(0, [newTitle length])];
 		}
 		
+        //--Modified 2009-11-17 by Alun Bestor - use the shadow from the current theme
+        NSShadow *textShadow = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] textShadow];
+        if (textShadow)
+        {
+            [newTitle addAttribute: NSShadowAttributeName
+                             value: textShadow
+                             range: NSMakeRange(0, [newTitle length])];
+        }
+        //--End of modifications
+        
 		[newTitle endEditing];
 		
 		//Make the super class do the drawing

@@ -354,6 +354,10 @@
 	return [shadow autorelease];
 }
 
+//--Added 2009-11-17 by Alun Bestor - override this in your own themes to render shadows on NSTextFields and NSButtons.
+-(NSShadow *)textShadow { return nil; }
+//--End of modifications
+
 -(CGFloat)alphaValue {
 	
 	return 0.6f;

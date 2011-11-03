@@ -92,6 +92,23 @@
 		
 		[self setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledTextColor]];
 	}
+    
+    //--Added 2009-11-17 by Alun Bestor - add text shadow before we draw the text itself
+    NSShadow *textShadow = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] textShadow];
+    if (textShadow)
+    {
+        NSMutableAttributedString *value;
+        if ([self attributedStringValue])	value = [[self attributedStringValue] mutableCopy];
+        else								value = [[NSMutableAttributedString alloc] initWithString: [self stringValue]];
+	
+        [value addAttribute: NSShadowAttributeName
+                      value: textShadow
+                      range: NSMakeRange(0, [value length])];
+
+        [self setAttributedStringValue: value];
+        [value release];
+    }
+    //--End of modifications
 	
 	[super drawRect: rect];
 }
