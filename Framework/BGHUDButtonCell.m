@@ -135,6 +135,8 @@
 		case NSRecessedBezelStyle:
 			[self drawRecessedButtonInFrame: cellFrame];
 			break;
+        default:
+            break;
 	}
 	
 	if(buttonType == NSSwitchButton || buttonType == NSRadioButton) {
