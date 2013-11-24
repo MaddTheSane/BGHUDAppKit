@@ -139,6 +139,7 @@
 
 - (void)drawHorizontalBarInFrame:(NSRect)frame {
 	
+    frame = [self controlView].bounds;
 	// Adjust frame based on ControlSize
 	switch ([self controlSize]) {
 			
@@ -232,7 +233,7 @@
 }
 
 - (void)drawVerticalBarInFrame:(NSRect)frame {
-	
+    frame = [self controlView].bounds;
 	//Vertical Scroller
 	switch ([self controlSize]) {
 			
