@@ -217,8 +217,6 @@
 		//Make the super class do the drawing
 		[super drawTitle: newTitle withFrame: textRect inView: controlView];
 	}
-	
-	[newTitle release];
 	return textRect;
 }
 
@@ -409,7 +407,6 @@
 	[path stroke];
 	
 	//path = nil;
-	[path release];
 	
 	if([self imagePosition] != NSImageOnly) {
 		
@@ -513,9 +510,7 @@
 	}
 	[path setLineWidth: 1.0f];
 	[path stroke];
-	
-	[path release];
-	
+		
 	if([self imagePosition] != NSImageOnly) {
 		
 		NSRect textFrame = frame;
@@ -594,9 +589,7 @@
 	}
 	[path setLineWidth: 1.0f];
 	[path stroke];
-	
-	[path release];
-	
+		
 	if([self imagePosition] != NSImageOnly) {
 		
 		[self drawTitle: [self attributedTitle] withFrame: frame inView: [self controlView]];
@@ -699,9 +692,7 @@
 		
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledNormalSolidFill] set];
 	}
-	
-	[path release];
-	
+		
 	if([self imagePosition] != NSImageOnly) {
 		
 		[self drawTitle: [self attributedTitle] withFrame: textFrame inView: [self controlView]];
@@ -894,9 +885,7 @@
 	}
 	[path setLineWidth: 1.0f];
 	[path stroke];
-	
-	[path release];
-	
+		
 	// Draw Glyphs for On/Off/Mixed States
 	switch ([self state]) {
 			
@@ -920,9 +909,7 @@
 			
 			[path setLineWidth: 2.0f];
 			[path stroke];
-			
-			[path release];
-			
+						
 			break;
 			
 		case NSOnState:
@@ -963,9 +950,7 @@
 					[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
 				}
 				[path fill];
-				
-				[path release];
-			} else {
+                } else {
 				
 				path = [[NSBezierPath alloc] init];
 				NSPoint pointsOn[4];
@@ -994,8 +979,6 @@
 				}
 				
 				[path stroke];
-				
-				[path release];
 			}
 			
 			break;
@@ -1089,9 +1072,7 @@
 	else {
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledNormalSolidFill] set];
 	}
-	
-	[path release];
-	
+		
 	if([self imagePosition] != NSImageOnly) {
 		[self drawTitle: [self attributedTitle] withFrame: textFrame inView: [self controlView]];
 	}
@@ -1116,11 +1097,6 @@
 #pragma mark -
 #pragma mark Helper Methods
 
--(void)dealloc {
-	
-	[themeKey release];
-	[super dealloc];
-}
 
 -(void)setValue:(id) value forKey:(NSString *) key {
 	
