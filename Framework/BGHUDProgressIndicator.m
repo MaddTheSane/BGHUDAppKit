@@ -36,9 +36,14 @@
 
 #import <objc/runtime.h>
 
+@interface NSProgressIndicator (Private)
+@property (atomic, readwrite, assign) unsigned int _animationIndex;
+@end
+
 @implementation BGHUDProgressIndicator
 
 @synthesize themeKey;
+
 
 #pragma mark Drawing Functions
 
@@ -140,7 +145,6 @@
 		
 		NSPoint position = NSMakePoint(frame.origin.x, frame.origin.y);
 		
-		if(progressPath) {[progressPath release];}
 		progressPath = [[NSBezierPath alloc] init];
 		
 		while(position.x <= (frame.origin.x + frame.size.width)) {
@@ -197,8 +201,12 @@
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] normalGradient] drawInRect: frame angle: 90];
 		
         //Get the animation index (private)
-        int animationIndex = 0;
-        object_getInstanceVariable( self, "_animationIndex", (void **)&animationIndex );
+		// getInstanceVariable is not supported under ARC, so we have to do a little bit more work - vade
+		
+		Ivar animationIndexIvar = class_getInstanceVariable ([self class], "_animationIndex");
+		ptrdiff_t offset = ivar_getOffset(animationIndexIvar);
+		unsigned char *selfBytes = (unsigned char *)(__bridge void *)self;
+		int animationIndex = * ((int *)(selfBytes + offset));
         
 		//Create XFormation
 		NSAffineTransform *trans = [NSAffineTransform transform];
@@ -215,15 +223,11 @@
 	}
 }
 
+
+
 #pragma mark -
 #pragma mark Helper Methods
 
--(void)dealloc {
-	
-	[themeKey release];
-	[progressPath release];
-	[super dealloc];
-}
 
 #pragma mark -
 
