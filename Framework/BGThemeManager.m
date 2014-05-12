@@ -39,14 +39,14 @@
 
 + (BGThemeManager *)keyedManager;
 {
-    static id sharedMyManager = nil;
+    static BGThemeManager* sharedMyManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedMyManager = [[self alloc] init];
+        sharedMyManager = [[BGThemeManager alloc] init];
+		[sharedMyManager initDefaultThemes];
     });
     return sharedMyManager;
 }
-
 
 -(void)initDefaultThemes {
 	
