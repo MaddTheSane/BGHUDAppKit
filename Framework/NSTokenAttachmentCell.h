@@ -36,7 +36,7 @@
 - (struct _NSSize)cellSize;
 - (NSRect)drawingRectForBounds:(NSRect)fp8;
 - (NSRect)titleRectForBounds:(NSRect)fp8;
-- (NSRect)cellFrameForTextContainer:(id)fp8 proposedLineFragment:(NSRect)fp12 glyphPosition:(struct _NSPoint)fp28 characterIndex:(unsigned int)fp36;
+- (NSRect)cellFrameForTextContainer:(id)fp8 proposedLineFragment:(NSRect)fp12 glyphPosition:(NSPoint)fp28 characterIndex:(unsigned int)fp36;
 - (struct _NSPoint)cellBaselineOffset;
 - (NSRect)pullDownRectForBounds:(NSRect)fp8;
 - (void)drawTokenWithFrame:(NSRect)fp8 inView:(id)fp24;
