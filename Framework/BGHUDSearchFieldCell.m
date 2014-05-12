@@ -249,16 +249,14 @@ NSImage *cancelButtonImageUp() {
 	//If window/app is active draw the highlight/text in active colors
 	if([self showsFirstResponder] && [[[self controlView] window] isKeyWindow])
 	{
-		[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor]
-				 forKey: NSBackgroundColorAttributeName];
+		dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor];
 		
 		[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextActiveColor]
 					 range: [view selectedRange]];
 	}
 	else
 	{
-		[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor]
-				 forKey: NSBackgroundColorAttributeName];
+		dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor];
 		
 		[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextInActiveColor]
 					 range: [view selectedRange]];
@@ -279,8 +277,7 @@ NSImage *cancelButtonImageUp() {
 	if(![self placeholderAttributedString] && [self placeholderString]) {
 		
 		//Nope lets create it
-		NSDictionary *attribs = [[NSDictionary alloc] initWithObjectsAndKeys: 
-								 [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor] , NSForegroundColorAttributeName, nil];
+		NSDictionary *attribs = @{NSForegroundColorAttributeName: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor]};
 		
 		//Set it
 		[self setPlaceholderAttributedString: [[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs]];

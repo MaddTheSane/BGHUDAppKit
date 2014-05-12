@@ -175,16 +175,14 @@
 	//If window/app is active draw the highlight/text in active colors
 	if([self showsFirstResponder] && [[[self controlView] window] isKeyWindow])
 	{
-		[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor]
-				 forKey: NSBackgroundColorAttributeName];
+		dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor];
 
 		[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextActiveColor]
 					 range: [view selectedRange]];
 	}
 	else
 	{
-		[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor]
-				 forKey: NSBackgroundColorAttributeName];
+		dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor];
 
 		[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextInActiveColor]
 					 range: [view selectedRange]];

@@ -190,7 +190,7 @@
 	
 	if([self showsFirstResponder] && [[[self controlView] window] isKeyWindow])
 	{
-		[dict setObject:[NSColor darkGrayColor] forKey:NSBackgroundColorAttributeName];
+		dict[NSBackgroundColorAttributeName] = [NSColor darkGrayColor];
 		
 		[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] textColor]];
 

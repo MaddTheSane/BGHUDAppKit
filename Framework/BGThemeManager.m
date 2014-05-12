@@ -54,21 +54,21 @@
 	themes = [[NSMutableDictionary alloc] initWithCapacity: 2];
 	
 	//Add the default Flat and Gradient themes
-	[themes setObject: [[BGTheme alloc] init] forKey: @"flatTheme"];
-	[themes setObject: [[BGGradientTheme alloc] init] forKey: @"gradientTheme"];
+	themes[@"flatTheme"] = [[BGTheme alloc] init];
+	themes[@"gradientTheme"] = [[BGGradientTheme alloc] init];
 }
 
 - (BGTheme *)themeForKey:(NSString *)key {
 
 	//Make sure the key exists before we try to
 	//return it
-	if([themes objectForKey: key]) {
+	if(themes[key]) {
 
-		return [themes objectForKey: key];
+		return themes[key];
 	} else {
 
 		//Return the default gradient key
-		return [themes objectForKey: @"gradientTheme"];
+		return themes[@"gradientTheme"];
 	}
 	
 	
@@ -76,7 +76,7 @@
 
 - (void)setTheme:(BGTheme *)theme forKey:(NSString *)key {
 	
-	[themes setObject: theme forKey: key];
+	themes[key] = theme;
 }
 
 @end

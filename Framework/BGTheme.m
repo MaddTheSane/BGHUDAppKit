@@ -189,10 +189,8 @@
 
 -(NSArray *)cellAlternatingRowColors {
 	
-	return [NSArray arrayWithObjects:
-			[NSColor colorWithCalibratedWhite: 0.16f alpha: 0.86f], 
-			[NSColor colorWithCalibratedWhite: 0.15f alpha: 0.8f], 
-			nil];
+	return @[[NSColor colorWithCalibratedWhite: 0.16f alpha: 0.86f], 
+			[NSColor colorWithCalibratedWhite: 0.15f alpha: 0.8f]];
 }
 
 -(NSColor *)cellSelectedTextColor {

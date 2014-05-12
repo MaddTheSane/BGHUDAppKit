@@ -190,16 +190,14 @@
 			
 			if([[[self controlView] window] isKeyWindow])
 			{
-				[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor]
-						 forKey: NSBackgroundColorAttributeName];
+				dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor];
 				
 				[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextActiveColor]
 							 range: [view selectedRange]];
 			}
 			else
 			{
-				[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor]
-						 forKey: NSBackgroundColorAttributeName];
+				dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor];
 				
 				[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextInActiveColor]
 							 range: [view selectedRange]];
@@ -253,9 +251,8 @@
 		[style setAlignment: [self alignment]];
 		
 		//Attributed string doesn't exist lets create it
-		NSDictionary *attribs = [[NSDictionary alloc] initWithObjectsAndKeys: 
-								 [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor] , NSForegroundColorAttributeName, 
-								 style, NSParagraphStyleAttributeName, nil];
+		NSDictionary *attribs = @{NSForegroundColorAttributeName: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor], 
+								 NSParagraphStyleAttributeName: style};
 		
 		
 		//Set it
