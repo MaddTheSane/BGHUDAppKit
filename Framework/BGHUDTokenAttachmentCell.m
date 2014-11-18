@@ -103,6 +103,9 @@
 			textRect.origin.y -= 3;
 			
 			break;
+			
+		default:
+			break;
 	}
 	
 	[super drawTokenWithFrame: fp8 inView: fp24];

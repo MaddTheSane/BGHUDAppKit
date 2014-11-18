@@ -34,7 +34,9 @@
 #import "BGThemeManager.h"
 
 IB_DESIGNABLE
-@interface BGHUDBox : NSBox {
+@interface BGHUDBox : NSBox
+#ifdef __i386__
+{
 	
 	BOOL flipGradient;
 	BOOL drawTopBorder;
@@ -55,21 +57,22 @@ IB_DESIGNABLE
 	NSString *themeKey;
 	BOOL useTheme;
 }
+#endif
 
 @property IBInspectable BOOL flipGradient;
 @property IBInspectable BOOL drawTopBorder;
 @property IBInspectable BOOL drawBottomBorder;
 @property IBInspectable BOOL drawLeftBorder;
 @property IBInspectable BOOL drawRightBorder;
-@property (strong) IBInspectable NSColor *borderColor;
+@property (copy) IBInspectable NSColor *borderColor;
 @property IBInspectable BOOL drawTopShadow;
 @property IBInspectable BOOL drawBottomShadow;
 @property IBInspectable BOOL drawLeftShadow;
 @property IBInspectable BOOL drawRightShadow;
-@property (strong) IBInspectable NSColor *shadowColor;
-@property (strong) IBInspectable NSGradient *customGradient;
-@property (strong) IBInspectable NSColor *color1;
-@property (strong) IBInspectable NSColor *color2;
+@property (copy) IBInspectable NSColor *shadowColor;
+@property (copy) IBInspectable NSGradient *customGradient;
+@property (copy) IBInspectable NSColor *color1;
+@property (copy) IBInspectable NSColor *color2;
 
 @property (copy) IBInspectable NSString *themeKey;
 @property IBInspectable BOOL useTheme;
