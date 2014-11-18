@@ -36,12 +36,13 @@
 #import "BGThemeManager.h"
 #import "BGHUDGeometry.h"
 
+IB_DESIGNABLE
 @interface BGHUDSegmentedCell : NSSegmentedCell {
 
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 -(void)drawInteriorForSegment:(NSInteger)segment withFrame:(NSRect)rect;
 -(BOOL)hasText;

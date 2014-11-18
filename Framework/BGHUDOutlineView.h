@@ -37,11 +37,12 @@
 #import "BGHUDTableViewHeaderCell.h"
 #import "BGHUDTableCornerView.h"
 
+IB_DESIGNABLE
 @interface BGHUDOutlineView : NSOutlineView {
 
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 @end

@@ -36,13 +36,14 @@
 #import "BGThemeManager.h"
 #import "BGHUDGeometry.h"
 
+IB_DESIGNABLE
 @interface BGHUDButtonCell : NSButtonCell {
 	BOOL isMouseIn;
 	NSString *themeKey;
 	NSButtonType buttonType;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 -(void)drawCheckInFrame:(NSRect)frame isRadio:(BOOL)radio;
 -(void)drawTexturedRoundedButtonInFrame:(NSRect)frame;

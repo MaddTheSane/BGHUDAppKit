@@ -35,13 +35,14 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDComboBoxCell : NSComboBoxCell {
 	
 	BOOL fillsBackground;
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 - (void)drawArrowsInRect:(NSRect) frame;
 -(void)drawButtonInRect:(NSRect) cellFrame;

@@ -36,11 +36,12 @@
 #import "BGHUDScroller.h"
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDScrollView : NSScrollView {
 	
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 @end

@@ -35,12 +35,13 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDProgressIndicator : NSProgressIndicator {
 
 	NSBezierPath *progressPath;
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (strong) IBInspectable NSString *themeKey;
 
 @end

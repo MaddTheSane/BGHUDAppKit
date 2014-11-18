@@ -34,11 +34,12 @@
 #import "BGThemeManager.h"
 #import "BGHUDTabViewItem.h"
 
+IB_DESIGNABLE
 @interface BGHUDTabView : NSTabView {
 
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 @end

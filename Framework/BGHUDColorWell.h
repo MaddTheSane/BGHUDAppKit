@@ -35,6 +35,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDColorWell : NSColorWell {
 
 	NSString *themeKey;
@@ -42,7 +43,7 @@
 	BOOL isBeingDecoded;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 - (BOOL)useTransparentWell;
 - (void)setUseTransparentWell:(BOOL) flag;

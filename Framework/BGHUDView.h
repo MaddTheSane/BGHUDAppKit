@@ -33,6 +33,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDView : NSView {
 
 	BOOL flipGradient;

@@ -35,6 +35,7 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDStepperCell : NSStepperCell {
 
 	NSString *themeKey;
@@ -47,6 +48,6 @@
 	BOOL isBottomDown;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 @end

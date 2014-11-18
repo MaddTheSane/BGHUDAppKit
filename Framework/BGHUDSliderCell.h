@@ -36,12 +36,13 @@
 #import "BGThemeManager.h"
 #import "BGHUDGeometry.h"
 
+IB_DESIGNABLE
 @interface BGHUDSliderCell : NSSliderCell {
 
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 -(void)drawHorizontalBarInFrame:(NSRect)frame;
 -(void)drawVerticalBarInFrame:(NSRect)frame;

@@ -35,12 +35,13 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDSearchFieldCell : NSSearchFieldCell {
 	
 	BOOL fillsBackground;
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 @end

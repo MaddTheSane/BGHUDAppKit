@@ -9,13 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDTableCornerView : NSView {
 
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
-- (id)initWithThemeKey:(NSString *)key;
+- (instancetype)initWithThemeKey:(NSString *)key;
 
 @end

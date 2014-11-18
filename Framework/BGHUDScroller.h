@@ -40,18 +40,17 @@
 #import "BGThemeManager.h"
 #import "BGHUDGeometry.h"
 
+IB_DESIGNABLE
 @interface BGHUDScroller : NSScroller {
 	
 	NSString *arrowPosition;
 	NSString *themeKey;
 }
 
-@property (nonatomic, copy,getter=themeKey) NSString *themeKey;
+@property (nonatomic, copy, getter=themeKey) IBInspectable NSString *themeKey;
 
 - (void)drawDecrementArrow:(BOOL)highlighted;
 - (void)drawIncrementArrow:(BOOL)highlighted;
-
--(NSString *)themeKey;
 
 -(BOOL)isHoriz;
 

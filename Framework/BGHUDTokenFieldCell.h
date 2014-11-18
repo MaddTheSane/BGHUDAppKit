@@ -37,12 +37,13 @@
 #import "NSTokenAttachmentCell.h"
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDTokenFieldCell : NSTokenFieldCell {
 
 	BOOL fillsBackground;
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 @end

@@ -35,12 +35,13 @@
 #import <Cocoa/Cocoa.h>
 #import "BGThemeManager.h"
 
+IB_DESIGNABLE
 @interface BGHUDPopUpButtonCell : NSPopUpButtonCell {
 
 	NSString *themeKey;
 }
 
-@property (strong) NSString *themeKey;
+@property (copy) IBInspectable NSString *themeKey;
 
 - (void)drawArrowsInRect:(NSRect) frame;
 

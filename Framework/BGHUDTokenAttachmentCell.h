@@ -35,6 +35,7 @@
 #import <Cocoa/Cocoa.h>
 #import "NSTokenAttachmentCell.h"
 
+IB_DESIGNABLE
 @interface BGHUDTokenAttachmentCell : NSTokenAttachmentCell {
 
 	NSColor *tokenFillNormal;
@@ -42,8 +43,8 @@
 	NSColor *tokenBorder;
 }
 
-@property (copy) NSColor *tokenFillNormal;
-@property (copy) NSColor *tokenFillHighlight;
-@property (copy) NSColor *tokenBorder;
+@property (copy) IBInspectable NSColor *tokenFillNormal;
+@property (copy) IBInspectable NSColor *tokenFillHighlight;
+@property (copy) IBInspectable NSColor *tokenBorder;
 
 @end
