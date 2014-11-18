@@ -33,7 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDScrollView.h"
-
+#import "ARCBridge.h"
 
 @implementation BGHUDScrollView
 
@@ -47,8 +47,8 @@
 		
 		[self setThemeKey: @"gradientTheme"];
 		
-		[super setVerticalScroller: [[BGHUDScroller alloc] init]];
-		[super setHorizontalScroller: [[BGHUDScroller alloc] init]];
+		[super setVerticalScroller: AUTORELEASEOBJ([[BGHUDScroller alloc] init])];
+		[super setHorizontalScroller: AUTORELEASEOBJ([[BGHUDScroller alloc] init])];
 	}
 	
 	return self;
@@ -62,8 +62,8 @@
 		
 		[self setThemeKey: @"gradientTheme"];
 		
-		[super setVerticalScroller: [[BGHUDScroller alloc] init]];
-		[super setHorizontalScroller: [[BGHUDScroller alloc] init]];
+		[super setVerticalScroller: AUTORELEASEOBJ([[BGHUDScroller alloc] init])];
+		[super setHorizontalScroller: AUTORELEASEOBJ([[BGHUDScroller alloc] init])];
 	}
 	
 	return self;
@@ -84,12 +84,12 @@
 		
 		if(![[super verticalScroller] isKindOfClass: [BGHUDScroller class]]) {
 			
-			[super setVerticalScroller: [[BGHUDScroller alloc] init]];
+			[super setVerticalScroller: AUTORELEASEOBJ([[BGHUDScroller alloc] init])];
 		}
 		
 		if(![[super horizontalScroller] isKindOfClass: [BGHUDScroller class]]) {
 			
-			[super setHorizontalScroller: [[BGHUDScroller alloc] init]];
+			[super setHorizontalScroller: AUTORELEASEOBJ([[BGHUDScroller alloc] init])];
 		}
 	}
 	
@@ -103,5 +103,12 @@
 	[coder encodeObject: self.themeKey forKey: @"themeKey"];
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 @end

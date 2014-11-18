@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDTableViewHeaderCell.h"
+#import "ARCBridge.h"
 
 @interface NSTableHeaderCell (AppKitPrivate)
 - (void)_drawSortIndicatorIfNecessaryWithFrame:(NSRect)arg1 inView:(id)arg2;
@@ -144,6 +145,7 @@
 		}
 		
 		[arrow fill];
+		RELEASEOBJ(arrow);
 	}
 	
 	frame.origin.y += 1;
@@ -153,6 +155,13 @@
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

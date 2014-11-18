@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDComboBoxCell.h"
+#import "ARCBridge.h"
 
 @implementation BGHUDComboBoxCell
 
@@ -147,6 +148,7 @@
 		[NSGraphicsContext restoreGraphicsState];
 	}
 	
+	RELEASEOBJ(path);
 	
 	NSRect frame = cellFrame;
 	
@@ -185,7 +187,7 @@
 	
 	NSTextView* view = (NSTextView*)[[controlView window] fieldEditor:NO forObject:controlView];
 	
-	NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];
+	NSMutableDictionary *dict = AUTORELEASEOBJ([[view selectedTextAttributes] mutableCopy]);
 	
 	
 	if([self showsFirstResponder] && [[[self controlView] window] isKeyWindow])
@@ -244,6 +246,7 @@
 
 	[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] normalGradient] drawInBezierPath: path angle: 90];
 	
+	RELEASEOBJ(path);
 }
 
 -(void)drawArrowsInRect:(NSRect) frame {
@@ -303,12 +306,20 @@
 	
 	[arrow fill];
 	
+	RELEASEOBJ(arrow);
 		
 }
 
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

@@ -45,6 +45,6 @@ IB_DESIGNABLE
 @property (copy) IBInspectable NSString *themeKey;
 
 -(void)drawInteriorForSegment:(NSInteger)segment withFrame:(NSRect)rect;
--(BOOL)hasText;
+@property (readonly) BOOL hasText;
 
 @end

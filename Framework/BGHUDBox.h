@@ -56,22 +56,22 @@ IB_DESIGNABLE
 	BOOL useTheme;
 }
 
-@property BOOL flipGradient;
-@property BOOL drawTopBorder;
-@property BOOL drawBottomBorder;
-@property BOOL drawLeftBorder;
-@property BOOL drawRightBorder;
-@property (strong) NSColor *borderColor;
-@property BOOL drawTopShadow;
-@property BOOL drawBottomShadow;
-@property BOOL drawLeftShadow;
-@property BOOL drawRightShadow;
-@property (strong) NSColor *shadowColor;
-@property (strong) NSGradient *customGradient;
-@property (strong) NSColor *color1;
-@property (strong) NSColor *color2;
+@property IBInspectable BOOL flipGradient;
+@property IBInspectable BOOL drawTopBorder;
+@property IBInspectable BOOL drawBottomBorder;
+@property IBInspectable BOOL drawLeftBorder;
+@property IBInspectable BOOL drawRightBorder;
+@property (strong) IBInspectable NSColor *borderColor;
+@property IBInspectable BOOL drawTopShadow;
+@property IBInspectable BOOL drawBottomShadow;
+@property IBInspectable BOOL drawLeftShadow;
+@property IBInspectable BOOL drawRightShadow;
+@property (strong) IBInspectable NSColor *shadowColor;
+@property (strong) IBInspectable NSGradient *customGradient;
+@property (strong) IBInspectable NSColor *color1;
+@property (strong) IBInspectable NSColor *color2;
 
-@property (strong) NSString *themeKey;
-@property BOOL useTheme;
+@property (copy) IBInspectable NSString *themeKey;
+@property IBInspectable BOOL useTheme;
 
 @end

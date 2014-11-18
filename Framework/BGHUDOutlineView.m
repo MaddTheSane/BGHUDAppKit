@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDOutlineView.h"
+#import "ARCBridge.h"
 
 @interface NSOutlineView (private)
 - (void)_sendDelegateWillDisplayCell:(id)cell forColumn:(id)column row:(NSInteger)row;
@@ -66,6 +67,7 @@
 		[newHeader setFont: [[aColumn headerCell] font]];
 		
 		[aColumn setHeaderCell: newHeader];
+		RELEASEOBJ(newHeader);
 	}
 	
 	return self;
@@ -97,6 +99,7 @@
 			[newHeader setFont: [[aColumn headerCell] font]];
 			
 			[aColumn setHeaderCell: newHeader];
+			RELEASEOBJ(newHeader);
 		}
 	}
 	
@@ -143,10 +146,17 @@
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 -(void)awakeFromNib {
 
-	[self setCornerView: [[BGHUDTableCornerView alloc] initWithThemeKey: self.themeKey]];
+	[self setCornerView: AUTORELEASEOBJ([[BGHUDTableCornerView alloc] initWithThemeKey: self.themeKey])];
 }
 
 #pragma mark -

@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDSegmentedCell.h"
+#import "ARCBridge.h"
 
 @interface NSSegmentedCell (private)
 -(NSRect)rectForSegment:(NSInteger)segment inFrame:(NSRect)frame;
@@ -151,6 +152,7 @@
 	
 	[NSGraphicsContext restoreGraphicsState];
 	
+	RELEASEOBJ(border);
 	
 	int segCount = 0;
 	
@@ -240,6 +242,7 @@
 	}
 	
 	[gradient drawInBezierPath: fillPath angle: 90];
+	RELEASEOBJ(fillPath);
 	
 	//Draw Segment dividers ONLY if they are
 	//inside segments
@@ -279,6 +282,7 @@
 		newTitle = [[NSAttributedString alloc] initWithString: @"" attributes: textAttributes];
 	}
 	
+	RELEASEOBJ(textAttributes);
 	//}
 	
 	NSRect textRect = rect;
@@ -334,6 +338,7 @@
 		[newTitle drawInRect: textRect];
 	}
 	
+	RELEASEOBJ(newTitle);
 }
 
 -(BOOL)hasText {
@@ -353,5 +358,12 @@
 	return flag;
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 @end

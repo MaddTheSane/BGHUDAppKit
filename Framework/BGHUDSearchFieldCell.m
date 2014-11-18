@@ -33,8 +33,11 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDSearchFieldCell.h"
+#import "ARCBridge.h"
 
 // TODO: Find out why NSSmallControlSize/NSMiniControlSize revert to original dark images
+NSImage *searchButtonImage() NS_RETURNS_RETAINED;
+NSImage *cancelButtonImageUp() NS_RETURNS_RETAINED;
 NSImage *searchButtonImage() {
 	
     static NSImage *__image = nil;
@@ -111,8 +114,8 @@ NSImage *cancelButtonImageUp() {
 		}
 		
 		[self setDrawsBackground: NO];
-		[[self searchButtonCell] setImage:searchButtonImage()];
-		[[self cancelButtonCell] setImage:cancelButtonImageUp()];
+		[[self searchButtonCell] setImage: AUTORELEASEOBJ(searchButtonImage())];
+		[[self cancelButtonCell] setImage: AUTORELEASEOBJ(cancelButtonImageUp())];
 		[[self cancelButtonCell] setAlternateImage:nil];
 		
 		if([self controlSize] == NSSmallControlSize) {
@@ -148,8 +151,8 @@ NSImage *cancelButtonImageUp() {
 		}
 		
 		[self setDrawsBackground: NO];
-		[[self searchButtonCell] setImage:searchButtonImage()];
-		[[self cancelButtonCell] setImage:cancelButtonImageUp()];
+		[[self searchButtonCell] setImage: AUTORELEASEOBJ( searchButtonImage())];
+		[[self cancelButtonCell] setImage: AUTORELEASEOBJ( cancelButtonImageUp())];
 		[[self cancelButtonCell] setAlternateImage:nil];
 		
 		if([self controlSize] == NSSmallControlSize) {
@@ -239,12 +242,14 @@ NSImage *cancelButtonImageUp() {
 		[NSGraphicsContext restoreGraphicsState];
 	}
 	
+	RELEASEOBJ(path);
 	
 	//Get TextView for this editor
 	NSTextView* view = (NSTextView*)[[controlView window] fieldEditor: NO forObject: controlView];
 	
 	//Get Attributes of the selected text
-	NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];	
+	NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];
+	AUTORELEASEOBJNORETURN(dict);
 	
 	//If window/app is active draw the highlight/text in active colors
 	if([self showsFirstResponder] && [[[self controlView] window] isKeyWindow])
@@ -280,7 +285,7 @@ NSImage *cancelButtonImageUp() {
 		NSDictionary *attribs = @{NSForegroundColorAttributeName: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor]};
 		
 		//Set it
-		[self setPlaceholderAttributedString: [[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs]];
+		[self setPlaceholderAttributedString: AUTORELEASEOBJ([[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs])];
 	}
 	
 	//Adjust Frame so Text Draws correctly
@@ -488,6 +493,13 @@ NSImage *cancelButtonImageUp() {
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

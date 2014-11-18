@@ -38,6 +38,7 @@
 @implementation BGHUDColorWell
 
 @synthesize themeKey;
+@synthesize useTransparentWell;
 
 #pragma mark Init/Dealloc Methods
 
@@ -83,6 +84,13 @@
 	[coder encodeBool: [self useTransparentWell] forKey: @"useTransparentWell"];
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 #pragma mark Drawing Methods

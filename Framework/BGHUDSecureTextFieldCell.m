@@ -7,6 +7,7 @@
 //
 
 #import "BGHUDSecureTextFieldCell.h"
+#import "ARCBridge.h"
 
 
 @implementation BGHUDSecureTextFieldCell
@@ -92,7 +93,7 @@
 	cellFrame = NSInsetRect(cellFrame, 0.5f, 0.5f);
 	
 	//Create Path
-	NSBezierPath *path = [NSBezierPath new];
+	NSBezierPath *path = AUTORELEASEOBJ([NSBezierPath new]);
 	
 	if([self bezelStyle] == NSTextFieldRoundedBezel) {
 		
@@ -154,7 +155,8 @@
 		if([view selectedRange].length > 0) {
 			
 			//Get Attributes of the selected text
-			NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];	
+			NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];
+			AUTORELEASEOBJNORETURN(dict);
 			
 			if([[[self controlView] window] isKeyWindow])
 			{
@@ -217,7 +219,7 @@
 		NSDictionary *attribs = @{NSForegroundColorAttributeName: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor]};
 		
 		//Set it
-		[self setPlaceholderAttributedString: [[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs]];
+		[self setPlaceholderAttributedString: AUTORELEASEOBJ([[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs])];
 	}
 	
 	//Adjust Frame so Text Draws correctly
@@ -262,6 +264,13 @@
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

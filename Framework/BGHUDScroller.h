@@ -47,7 +47,7 @@ IB_DESIGNABLE
 	NSString *themeKey;
 }
 
-@property (nonatomic, copy, getter=themeKey) IBInspectable NSString *themeKey;
+@property (nonatomic, copy) IBInspectable NSString *themeKey;
 
 - (void)drawDecrementArrow:(BOOL)highlighted;
 - (void)drawIncrementArrow:(BOOL)highlighted;

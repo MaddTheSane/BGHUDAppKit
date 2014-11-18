@@ -33,7 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDProgressIndicator.h"
-
+#import "ARCBridge.h"
 #import <objc/runtime.h>
 
 @interface NSProgressIndicator (Private)
@@ -145,6 +145,9 @@
 		
 		NSPoint position = NSMakePoint(frame.origin.x, frame.origin.y);
 		
+#if !__has_feature(objc_arc)
+		if(progressPath) {[progressPath release];}
+#endif
 		progressPath = [[NSBezierPath alloc] init];
 		
 		while(position.x <= (frame.origin.x + frame.size.width)) {
@@ -223,11 +226,17 @@
 	}
 }
 
-
-
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[progressPath release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

@@ -38,6 +38,7 @@
 //					provided by [tylerb](GitHub).
 
 #import "BGHUDTextFieldCell.h"
+#import "ARCBridge.h"
 
 
 @implementation BGHUDTextFieldCell
@@ -124,7 +125,7 @@
 	cellFrame = NSInsetRect(cellFrame, 0.5f, 0.5f);
 	
 	//Create Path
-	NSBezierPath *path = [NSBezierPath new];
+	NSBezierPath *path = AUTORELEASEOBJ([NSBezierPath new]);
 	
 	if([self bezelStyle] == NSTextFieldRoundedBezel) {
 		
@@ -186,7 +187,7 @@
 		if([view selectedRange].length > 0) {
 			
 			//Get Attributes of the selected text
-			NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];	
+			NSMutableDictionary *dict = AUTORELEASEOBJ([[view selectedTextAttributes] mutableCopy]);
 			
 			if([[[self controlView] window] isKeyWindow])
 			{
@@ -256,7 +257,8 @@
 		
 		
 		//Set it
-		[self setPlaceholderAttributedString: [[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs]];
+		[self setPlaceholderAttributedString: AUTORELEASEOBJ([[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs])];
+		RELEASEOBJ(style);
 	} else if([self placeholderAttributedString] && [[self placeholderAttributedString] length] > 0) {
 		
 		// Check to see if the proper styles have been applied
@@ -277,6 +279,8 @@
 			[self setPlaceholderAttributedString: adjPlaceholder];
 			
 			// Cleanup
+			RELEASEOBJ(style);
+			RELEASEOBJ(adjPlaceholder);
 		}
 	}
 	
@@ -327,6 +331,13 @@
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

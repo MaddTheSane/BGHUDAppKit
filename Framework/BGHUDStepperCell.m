@@ -34,6 +34,7 @@
 
 #import "BGHUDStepperCell.h"
 #import "BGHUDGeometry.h"
+#import "ARCBridge.h"
 
 @interface BGHUDStepperCell (Private)
 -(void)drawRoundRectButtonInFrame:(NSRect)frame;
@@ -206,6 +207,7 @@
 			[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] pushedSolidFill] set];
 			[path fill];
 			
+			RELEASEOBJ(path);
 		}
 		else if(isBottomDown)
 		{
@@ -229,6 +231,7 @@
 			[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] pushedSolidFill] set];
 			[path fill];
 			
+			RELEASEOBJ(path);
 		}
 	}
 	
@@ -255,6 +258,7 @@
 	[path setLineWidth: 1.0f];
 	[path stroke];
 	
+	RELEASEOBJ(path);
 	
 	
 }
@@ -292,6 +296,7 @@
 	
 	[arrow fill];
 	
+	RELEASEOBJ(arrow);
 	
 	
 	arrow = [[NSBezierPath alloc] init];
@@ -313,6 +318,7 @@
 	
 	[arrow fill];
 	
+	RELEASEOBJ(arrow);
 }
 
 @end

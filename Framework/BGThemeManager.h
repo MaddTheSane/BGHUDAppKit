@@ -42,7 +42,7 @@
 }
 
 + (instancetype)keyedManager;
--(void)initDefaultThemes;
+- (void)initDefaultThemes;
 - (BGTheme *)themeForKey:(NSString *)key;
 - (void)setTheme:(BGTheme *)theme forKey:(NSString *)key;
 

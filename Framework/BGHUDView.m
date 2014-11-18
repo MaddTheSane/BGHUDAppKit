@@ -31,6 +31,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDView.h"
+#import "ARCBridge.h"
 
 
 @implementation BGHUDView
@@ -178,7 +179,7 @@
 		
 		if(customGradient != nil) {
 			
-			gradient = customGradient;
+			gradient = RETAINOBJ(customGradient);
 		} else {
 			
 			gradient = [[NSGradient alloc] initWithStartingColor: self.color1 endingColor: self.color2];
@@ -197,6 +198,7 @@
 			[gradient drawInRect: rect angle: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] gradientAngle]];
 		}
 		
+		RELEASEOBJ(gradient);
 		
 		[[NSGraphicsContext currentContext] setShouldAntialias: NO];
 		
@@ -265,8 +267,21 @@
 			[NSGraphicsContext restoreGraphicsState];
 		}
 		
+		RELEASEOBJ(dropShadow);
 	}
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[color1 release];
+	[color2 release];
+	[customGradient release];
+	[borderColor release];
+	[shadowColor release];
+	[super dealloc];
+}
+#endif
 
 @end

@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDPopUpButtonCell.h"
+#import "ARCBridge.h"
 
 @implementation BGHUDPopUpButtonCell
 
@@ -296,6 +297,7 @@
 	[super drawTitle: aTitle withFrame: titleFrame inView: controlView];
 	[self drawImage: [self image] withFrame: imageFrame inView: controlView];
 	
+	RELEASEOBJ(aTitle);
 }
 
 - (void)drawImage:(NSImage *)image withFrame:(NSRect)frame inView:(NSView *)controlView {
@@ -479,6 +481,7 @@
 		
 		[arrow fill];
 		
+		RELEASEOBJ(arrow);
 		
 	} else {
 		
@@ -546,12 +549,21 @@
 		}
 		[bottomArrow fill];
 		
+		RELEASEOBJ(topArrow);
+		RELEASEOBJ(bottomArrow);
 	}
 }
 
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release]; 
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

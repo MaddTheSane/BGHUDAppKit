@@ -31,6 +31,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDBox.h"
+#import "ARCBridge.h"
 
 
 @implementation BGHUDBox
@@ -211,6 +212,7 @@
 					[gradient drawInBezierPath: path angle: 90];
 				}
 				
+				RELEASEOBJ(gradient);
 				
 				if([self borderType] != NSNoBorder) {
 					
@@ -245,6 +247,7 @@
 					}
 				}
 				
+				RELEASEOBJ(gradient);
 				
 				[[NSGraphicsContext currentContext] setShouldAntialias: NO];
 				
@@ -313,6 +316,7 @@
 					[NSGraphicsContext restoreGraphicsState];
 				}
 				
+				RELEASEOBJ(dropShadow);
 			}
 		}
 	} else {
@@ -321,6 +325,19 @@
 	}
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	 
+	[color1 release];
+	[color2 release];
+	[customGradient release];
+	[borderColor release];
+	[shadowColor release];
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 @end
 

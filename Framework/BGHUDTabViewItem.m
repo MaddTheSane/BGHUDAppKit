@@ -42,5 +42,12 @@
 	return [[[BGThemeManager keyedManager] themeForKey: self.themeKey] textColor];
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 @end

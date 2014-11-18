@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGThemeManager.h"
+#import "ARCBridge.h"
 
 
 @implementation BGThemeManager
@@ -54,8 +55,8 @@
 	themes = [[NSMutableDictionary alloc] initWithCapacity: 2];
 	
 	//Add the default Flat and Gradient themes
-	themes[@"flatTheme"] = [[BGTheme alloc] init];
-	themes[@"gradientTheme"] = [[BGGradientTheme alloc] init];
+	themes[@"flatTheme"] = AUTORELEASEOBJ([[BGTheme alloc] init]);
+	themes[@"gradientTheme"] = AUTORELEASEOBJ([[BGGradientTheme alloc] init]);
 }
 
 - (BGTheme *)themeForKey:(NSString *)key {

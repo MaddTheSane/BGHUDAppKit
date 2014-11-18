@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDTableView.h"
+#import "ARCBridge.h"
 
 @interface NSTableView (private)
 - (void)_sendDelegateWillDisplayCell:(id)cell forColumn:(id)column row:(NSInteger)row;
@@ -64,6 +65,7 @@
 				[newHeader setThemeKey: [self themeKey]];
 				[newHeader setFont: [[aColumn headerCell] font]];
 				[aColumn setHeaderCell: newHeader];
+				RELEASEOBJ(newHeader);
 			} else {
 				
 				[[aColumn headerCell] setThemeKey: [self themeKey]];
@@ -99,6 +101,7 @@
 				[newHeader setThemeKey: [self themeKey]];
 				[newHeader setFont: [[aColumn headerCell] font]];
 				[aColumn setHeaderCell: newHeader];
+				RELEASEOBJ(newHeader);
 			} else {
 				
 				[[aColumn headerCell] setThemeKey: [self themeKey]];
@@ -175,12 +178,19 @@
 
 -(void)awakeFromNib {
 	
-	[self setCornerView: [[BGHUDTableCornerView alloc] initWithThemeKey: self.themeKey]];
+	[self setCornerView: AUTORELEASEOBJ([[BGHUDTableCornerView alloc] initWithThemeKey: self.themeKey])];
 }
 
 #pragma mark -
 #pragma mark Helper Methods
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 

@@ -11,12 +11,11 @@
     id _delegate;
 }
 
-- (id)initWithDelegate:(id)fp8;
+- (instancetype)initWithDelegate:(id)fp8;
 - (void)encodeWithCoder:(id)fp8;
-- (id)initWithCoder:(id)fp8;
+- (instancetype)initWithCoder:(id)fp8;
 - (id)attachmentCell;
-- (id)delegate;
-- (void)setDelegate:(id)fp8;
+@property (assign) id delegate;
 
 @end
 

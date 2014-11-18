@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDTokenAttachmentCell.h"
+#import "ARCBridge.h"
 
 
 @implementation BGHUDTokenAttachmentCell
@@ -114,6 +115,7 @@
 		[newTitle drawInRect: textRect];
 	}
 	
+	RELEASEOBJ(newTitle);
 }
 
 @end

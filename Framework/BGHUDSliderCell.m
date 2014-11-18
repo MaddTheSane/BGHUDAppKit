@@ -33,6 +33,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDSliderCell.h"
+#import "ARCBridge.h"
 
 
 @implementation BGHUDSliderCell
@@ -87,6 +88,13 @@
 	return copy;
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 #pragma mark -
 #pragma mark Drawing Methods
@@ -130,6 +138,7 @@
 		
 		//Place holder for when I figure out how to draw NSCircularSlider
 	}
+	RELEASEOBJ(clipPath);
 }
 
 - (void)drawHorizontalBarInFrame:(NSRect)frame {
@@ -224,6 +233,7 @@
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledStrokeColor] set];
 		[path stroke];
 	}
+	RELEASEOBJ(path);
 }
 
 - (void)drawVerticalBarInFrame:(NSRect)frame {
@@ -308,7 +318,8 @@
 	
 	[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
 	[path stroke];
-
+	
+	RELEASEOBJ(path);
 }
 
 - (void)drawHorizontalKnobInFrame:(NSRect)frame {
@@ -485,6 +496,8 @@
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledKnobColor] drawInBezierPath: pathInner angle: 90];
 	}
 	
+	RELEASEOBJ(pathOuter);
+	RELEASEOBJ(pathInner);
 }
 
 - (void)drawVerticalKnobInFrame:(NSRect)frame {
@@ -657,6 +670,8 @@
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledKnobColor] drawInBezierPath: pathInner angle: 90];
 	}
 	
+	RELEASEOBJ(pathOuter);
+	RELEASEOBJ(pathInner);
 }
 
 #pragma mark -

@@ -45,6 +45,6 @@ IB_DESIGNABLE
 @property (copy) IBInspectable NSString *themeKey;
 
 - (void)drawArrowsInRect:(NSRect) frame;
--(void)drawButtonInRect:(NSRect) cellFrame;
+- (void)drawButtonInRect:(NSRect) cellFrame;
 
 @end

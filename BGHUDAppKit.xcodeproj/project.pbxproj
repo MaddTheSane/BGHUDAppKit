@@ -25,6 +25,7 @@
 		13F8B89007B43554008AE28D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		546DEAF3067F632A0098DCC4 /* BGHUDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DF68FD067E5B5A0090B5B0 /* BGHUDAppKit.framework */; };
 		54D33B2906778E3300C9C163 /* BGHUDButtonCell.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 54D33B2806778E3300C9C163 /* BGHUDButtonCell.classdescription */; };
+		55B22BA41A1BE5AA0007665E /* ARCBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B22BA31A1BE5AA0007665E /* ARCBridge.h */; };
 		8D1AC96C0486D14A00FE50C9 /* BGHUDAppKitInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0259C577FE90428111CA0C5A /* BGHUDAppKitInspector.m */; settings = {ATTRIBUTES = (); }; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		8D1AC9800486D23B00FE50C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D1AC97F0486D23B00FE50C9 /* InfoPlist.strings */; };
@@ -189,6 +190,7 @@
 		53DF68FD067E5B5A0090B5B0 /* BGHUDAppKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BGHUDAppKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF68FE067E5B5A0090B5B0 /* BGHUDAppKitFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BGHUDAppKitFramework-Info.plist"; path = "Framework/BGHUDAppKitFramework-Info.plist"; sourceTree = "<group>"; };
 		54D33B2806778E3300C9C163 /* BGHUDButtonCell.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.ibClassDescription; name = BGHUDButtonCell.classdescription; path = Plugin/BGHUDButtonCell.classdescription; sourceTree = "<group>"; };
+		55B22BA31A1BE5AA0007665E /* ARCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCBridge.h; sourceTree = "<group>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = file.bplist; fileEncoding = 4; name = Info.plist; path = Plugin/Info.plist; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
 		8D1AC9740486D14A00FE50C9 /* BGHUDAppKitPlugin.ibplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BGHUDAppKitPlugin.ibplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1AC97B0486D23100FE50C9 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Plugin/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				E79C25CD0E109B9200742AF4 /* BGHUDTextFieldCell */,
 				E7981EC90E12D3070081E937 /* BGHUDTokenFieldCell */,
 				E7C104940E8C476D00A96E1A /* BGHUDGeometry.h */,
+				55B22BA31A1BE5AA0007665E /* ARCBridge.h */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				E71317DF0E10667D00885A23 /* BGHUDAppKit.h in Headers */,
 				E71317E00E10667D00885A23 /* BGHUDButtonCell.h in Headers */,
 				E71317E20E10667D00885A23 /* BGTheme.h in Headers */,
+				55B22BA41A1BE5AA0007665E /* ARCBridge.h in Headers */,
 				E71317E40E10667D00885A23 /* BGThemeManager.h in Headers */,
 				E79C25D00E109BB500742AF4 /* BGHUDTextFieldCell.h in Headers */,
 				E7894D850E12978C00D28139 /* BGHUDPopUpButtonCell.h in Headers */,

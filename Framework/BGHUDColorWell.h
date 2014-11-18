@@ -44,8 +44,6 @@ IB_DESIGNABLE
 }
 
 @property (copy) IBInspectable NSString *themeKey;
-
-- (BOOL)useTransparentWell;
-- (void)setUseTransparentWell:(BOOL) flag;
+@property IBInspectable BOOL useTransparentWell;
 
 @end

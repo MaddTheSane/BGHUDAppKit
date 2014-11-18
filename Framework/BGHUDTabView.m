@@ -31,6 +31,7 @@
 //	POSSIBILITY OF SUCH DAMAGE.
 
 #import "BGHUDTabView.h"
+#import "ARCBridge.h"
 
 @implementation BGHUDTabView
 
@@ -186,6 +187,7 @@
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
 		[path stroke];
 		
+		RELEASEOBJ(path);
 	} else if(index > 0 && index < ([self numberOfTabViewItems] -1)) {
 		
 		if([self tabViewType] == NSRightTabsBezelBorder ||
@@ -287,8 +289,16 @@
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
 		[path stroke];
 		
+		RELEASEOBJ(path);
 	}
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 @end

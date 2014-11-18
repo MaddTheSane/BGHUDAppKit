@@ -18,11 +18,9 @@
     } _tacFlags;
 }
 
-+ (void)initialize;
-- (id)initTextCell:(id)fp8;
-- (id)init;
-- (id)representedObject;
-- (void)setRepresentedObject:(id)fp8;
+- (instancetype)initTextCell:(id)fp8;
+- (instancetype)init;
+@property (retain) id representedObject;
 - (int)interiorBackgroundStyle;
 - (BOOL)_hasMenu;
 - (id)tokenForegroundColor;
@@ -31,19 +29,19 @@
 - (void)setTextColor:(id)fp8;
 - (id)pullDownImage;
 - (id)menu;
-- (struct _NSSize)cellSizeForBounds:(NSRect)fp8;
-- (struct _NSSize)cellSize;
+- (NSSize)cellSizeForBounds:(NSRect)fp8;
+- (NSSize)cellSize;
 - (NSRect)drawingRectForBounds:(NSRect)fp8;
 - (NSRect)titleRectForBounds:(NSRect)fp8;
 - (NSRect)cellFrameForTextContainer:(id)fp8 proposedLineFragment:(NSRect)fp12 glyphPosition:(NSPoint)fp28 characterIndex:(unsigned int)fp36;
-- (struct _NSPoint)cellBaselineOffset;
+- (NSPoint)cellBaselineOffset;
 - (NSRect)pullDownRectForBounds:(NSRect)fp8;
 - (void)drawTokenWithFrame:(NSRect)fp8 inView:(id)fp24;
 - (void)drawInteriorWithFrame:(NSRect)fp8 inView:(id)fp24;
 - (void)drawWithFrame:(NSRect)fp8 inView:(id)fp24;
 - (void)drawWithFrame:(NSRect)fp8 inView:(id)fp24 characterIndex:(unsigned int)fp28 layoutManager:(id)fp32;
 - (void)encodeWithCoder:(id)fp8;
-- (id)initWithCoder:(id)fp8;
+- (instancetype)initWithCoder:(id)fp8;
 - (BOOL)wantsToTrackMouseForEvent:(id)fp8 inRect:(NSRect)fp12 ofView:(id)fp28 atCharacterIndex:(unsigned int)fp32;
 - (BOOL)trackMouse:(id)fp8 inRect:(NSRect)fp12 ofView:(id)fp28 atCharacterIndex:(unsigned int)fp32 untilMouseUp:(BOOL)fp36;
 

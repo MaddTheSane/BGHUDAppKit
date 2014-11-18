@@ -39,7 +39,7 @@
 
 @synthesize themeKey;
 
--(id)init {
+-(instancetype)init {
 	
 	self = [super init];
 	
@@ -56,7 +56,7 @@
 	return self;
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder {
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
 	
 	self = [super initWithCoder: aDecoder];
 	
@@ -96,5 +96,12 @@
 	[super drawRect: rect];
 }
 
+#if !__has_feature(objc_arc)
+-(void)dealloc {
+	
+	[themeKey release];
+	[super dealloc];
+}
+#endif
 
 @end
