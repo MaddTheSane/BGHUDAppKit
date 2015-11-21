@@ -1,9 +1,8 @@
-build
-BGHUDAppKit.xcodeproj/*.mode1v3
-BGHUDAppKit.xcodeproj/*.pbxuser
-BGHUDAppKit.xcodeproj/*.perspectivev3
-BGHUDAppKit.xcodeproj/xcuserdata/
-bghudtest/bghudtest.xcodeproj/xcuserdata/
-bghudtest/bghudtest.xcodeproj/project.xcworkspace/
+build/
+*.mode1v3
+*.pbxuser
+*.perspectivev3
 .DS_Store
-BGHUDAppKit.xcodeproj/project.xcworkspace/xcuserdata/binarygod.xcuserdatad/
+xcuserdata/
+project.xcworkspace/
+xcuserdata/

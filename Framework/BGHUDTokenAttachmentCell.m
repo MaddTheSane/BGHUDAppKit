@@ -102,6 +102,10 @@
 			textRect.origin.y -= 3;
 			
 			break;
+			
+		case NSRegularControlSize:
+			//Do nothing
+			break;
 	}
 	
 	[super drawTokenWithFrame: fp8 inView: fp24];
