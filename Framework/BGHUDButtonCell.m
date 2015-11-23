@@ -85,7 +85,7 @@
 	[super encodeWithCoder: coder];
 	
 	[coder encodeObject: self.themeKey forKey: @"themeKey"];
-	[coder encodeInt: buttonType forKey: @"BGButtonType"];
+	[coder encodeInt: (int)buttonType forKey: @"BGButtonType"];
 }
 
 -(id)copyWithZone:(NSZone *) zone {
