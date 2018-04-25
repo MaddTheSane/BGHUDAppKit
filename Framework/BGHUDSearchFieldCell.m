@@ -117,15 +117,11 @@ NSImage *cancelButtonImageUp() {
 		
 		if([self controlSize] == NSSmallControlSize) {
 			
-			[[[self searchButtonCell] image] setScalesWhenResized: YES];
 			[[[self searchButtonCell] image] setSize: NSMakeSize(12, 12)];
-			[[[self cancelButtonCell] image] setScalesWhenResized: YES];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(12, 12)];
 		} else if ([self controlSize] == NSMiniControlSize) {
 			
-			[[[self searchButtonCell] image] setScalesWhenResized: YES];
 			[[[self searchButtonCell] image] setSize: NSMakeSize(10, 10)];
-			[[[self cancelButtonCell] image] setScalesWhenResized: YES];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(10, 10)];
 		}
 	}
@@ -154,15 +150,11 @@ NSImage *cancelButtonImageUp() {
 		
 		if([self controlSize] == NSSmallControlSize) {
 			
-			[[[self searchButtonCell] image] setScalesWhenResized: YES];
 			[[[self searchButtonCell] image] setSize: NSMakeSize(12, 12)];
-			[[[self cancelButtonCell] image] setScalesWhenResized: YES];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(12, 12)];
 		} else if ([self controlSize] == NSMiniControlSize) {
 			
-			[[[self searchButtonCell] image] setScalesWhenResized: YES];
 			[[[self searchButtonCell] image] setSize: NSMakeSize(10, 10)];
-			[[[self cancelButtonCell] image] setScalesWhenResized: YES];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(10, 10)];
 		}
 	}
@@ -476,15 +468,11 @@ NSImage *cancelButtonImageUp() {
 	
 	if([self controlSize] == NSSmallControlSize) {
 		
-		[[[self searchButtonCell] image] setScalesWhenResized: YES];
 		[[[self searchButtonCell] image] setSize: NSMakeSize(12, 12)];
-		[[[self cancelButtonCell] image] setScalesWhenResized: YES];
 		[[[self cancelButtonCell] image] setSize: NSMakeSize(12, 12)];
 	} else if ([self controlSize] == NSMiniControlSize) {
 		
-		[[[self searchButtonCell] image] setScalesWhenResized: YES];
 		[[[self searchButtonCell] image] setSize: NSMakeSize(10, 10)];
-		[[[self cancelButtonCell] image] setScalesWhenResized: YES];
 		[[[self cancelButtonCell] image] setSize: NSMakeSize(10, 10)];
 	}
 }

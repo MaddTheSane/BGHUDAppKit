@@ -292,13 +292,11 @@
 	if([super imageForSegment: segment] != nil) {
 		
 		NSImage *image = [self imageForSegment: segment];
-		[image setFlipped: YES];
 		
 		if([self imageScalingForSegment: segment] == NSImageScaleProportionallyDown) {
 			
 			CGFloat resizeRatio = (rect.size.height - 4) / [image size].height;
 			
-			[image setScalesWhenResized: YES];
 			[image setSize: NSMakeSize([image size].width * resizeRatio, rect.size.height -4)];
 		}
 		
@@ -314,7 +312,7 @@
 			textRect.size.height = [newTitle size].height;
 			textRect.size.width = [newTitle size].width;
 			
-			[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue]];
+			[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue] respectFlipped:YES hints:nil];
 			[newTitle drawInRect: textRect];
 			
 		} else {
@@ -325,7 +323,7 @@
 			imageRect.size.height = [image size].height;
 			imageRect.size.width = [image size].width;
 			
-			[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue]];
+			[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue] respectFlipped:YES hints:nil];
 		}
 	} else {
 		

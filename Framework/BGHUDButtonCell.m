@@ -313,14 +313,12 @@
 					break;
 			}
 			
-			[image setFlipped: YES];
-			
 			//Draw the image based on enabled state
 			if([self isEnabled]) {
 				
-				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue]];
+				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue] respectFlipped:YES hints:nil];
 			} else {
-				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledAlphaValue]];
+				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledAlphaValue] respectFlipped:YES hints:nil];
 			}
 			
 		}
@@ -777,6 +775,7 @@
 	// Determine Horizontal Placement
 	switch ([self imagePosition]) {
 			
+		case NSImageLeading:
 		case NSImageLeft:
 			
 			//Make adjustments to horizontal placement
@@ -819,6 +818,7 @@
 			innerRect.origin.x += BGCenterX(frame) - BGCenterX(innerRect);
 			break;
 			
+		case NSImageTrailing:
 		case NSImageRight:
 			
 			if([self controlSize] == NSRegularControlSize) {
