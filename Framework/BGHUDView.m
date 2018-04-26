@@ -61,10 +61,10 @@
 		self.themeKey = @"gradientTheme";
 		self.useTheme = YES;
 		self.flipGradient = NO;
-		self.borderColor = [[NSColor blackColor] retain];
-		self.shadowColor = [[NSColor blackColor] retain];
-		self.color1 = [[NSColor blackColor] retain];
-		self.color2 = [[NSColor whiteColor] retain];
+		self.borderColor = [NSColor blackColor];
+		self.shadowColor = [NSColor blackColor];
+		self.color1 = [NSColor blackColor];
+		self.color2 = [NSColor whiteColor];
 	}
 	
 	return self;
@@ -79,10 +79,10 @@
 		self.themeKey = @"gradientTheme";
 		self.useTheme = YES;
 		self.flipGradient = NO;
-		self.borderColor = [[NSColor blackColor] retain];
-		self.shadowColor = [[NSColor blackColor] retain];
-		self.color1 = [[NSColor blackColor] retain];
-		self.color2 = [[NSColor whiteColor] retain];
+		self.borderColor = [NSColor blackColor];
+		self.shadowColor = [NSColor blackColor];
+		self.color1 = [NSColor blackColor];
+		self.color2 = [NSColor whiteColor];
 	}
 	
 	return self;
@@ -178,7 +178,7 @@
 		
 		if(customGradient != nil) {
 			
-			gradient = [customGradient retain];
+			gradient = customGradient;
 		} else {
 			
 			gradient = [[NSGradient alloc] initWithStartingColor: self.color1 endingColor: self.color2];
@@ -197,7 +197,6 @@
 			[gradient drawInRect: rect angle: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] gradientAngle]];
 		}
 		
-		[gradient release];
 		
 		[[NSGraphicsContext currentContext] setShouldAntialias: NO];
 		
@@ -266,19 +265,8 @@
 			[NSGraphicsContext restoreGraphicsState];
 		}
 		
-		[dropShadow release];
 	}
 }
 
--(void)dealloc {
-	
-	[themeKey release];
-	[color1 release];
-	[color2 release];
-	[customGradient release];
-	[borderColor release];
-	[shadowColor release];
-	[super dealloc];
-}
 
 @end

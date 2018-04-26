@@ -65,12 +65,12 @@
 @property BOOL drawBottomShadow;
 @property BOOL drawLeftShadow;
 @property BOOL drawRightShadow;
-@property (retain) NSColor *shadowColor;
-@property (retain) NSGradient *customGradient;
-@property (retain) NSColor *color1;
-@property (retain) NSColor *color2;
+@property (strong) NSColor *shadowColor;
+@property (strong) NSGradient *customGradient;
+@property (strong) NSColor *color1;
+@property (strong) NSColor *color2;
 
-@property (retain) NSString *themeKey;
+@property (strong) NSString *themeKey;
 @property BOOL useTheme;
 
 @end

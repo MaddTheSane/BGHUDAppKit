@@ -92,7 +92,7 @@
 	cellFrame = NSInsetRect(cellFrame, 0.5f, 0.5f);
 	
 	//Create Path
-	NSBezierPath *path = [[NSBezierPath new] autorelease];
+	NSBezierPath *path = [NSBezierPath new];
 	
 	if([self bezelStyle] == NSTextFieldRoundedBezel) {
 		
@@ -154,20 +154,18 @@
 		if([view selectedRange].length > 0) {
 			
 			//Get Attributes of the selected text
-			NSMutableDictionary *dict = [[[view selectedTextAttributes] mutableCopy] autorelease];	
+			NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];	
 			
 			if([[[self controlView] window] isKeyWindow])
 			{
-				[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor]
-						 forKey: NSBackgroundColorAttributeName];
+				dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor];
 				
 				[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextActiveColor]
 							 range: [view selectedRange]];
 			}
 			else
 			{
-				[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor]
-						 forKey: NSBackgroundColorAttributeName];
+				dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor];
 				
 				[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextInActiveColor]
 							 range: [view selectedRange]];
@@ -216,11 +214,10 @@
 	if(![self placeholderAttributedString] && [self placeholderString]) {
 		
 		//Nope lets create it
-		NSDictionary *attribs = [[NSDictionary alloc] initWithObjectsAndKeys: 
-								 [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor] , NSForegroundColorAttributeName, nil];
+		NSDictionary *attribs = @{NSForegroundColorAttributeName: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor]};
 		
 		//Set it
-		[self setPlaceholderAttributedString: [[[NSAttributedString alloc] initWithString: [self placeholderString] attributes: [attribs autorelease]] autorelease]];
+		[self setPlaceholderAttributedString: [[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs]];
 	}
 	
 	//Adjust Frame so Text Draws correctly
@@ -265,11 +262,6 @@
 #pragma mark -
 #pragma mark Helper Methods
 
--(void)dealloc {
-	
-	[themeKey release];
-	[super dealloc];
-}
 
 #pragma mark -
 

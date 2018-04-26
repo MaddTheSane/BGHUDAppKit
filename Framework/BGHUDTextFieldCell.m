@@ -124,7 +124,7 @@
 	cellFrame = NSInsetRect(cellFrame, 0.5f, 0.5f);
 	
 	//Create Path
-	NSBezierPath *path = [[NSBezierPath new] autorelease];
+	NSBezierPath *path = [NSBezierPath new];
 	
 	if([self bezelStyle] == NSTextFieldRoundedBezel) {
 		
@@ -186,20 +186,18 @@
 		if([view selectedRange].length > 0) {
 			
 			//Get Attributes of the selected text
-			NSMutableDictionary *dict = [[[view selectedTextAttributes] mutableCopy] autorelease];	
+			NSMutableDictionary *dict = [[view selectedTextAttributes] mutableCopy];	
 			
 			if([[[self controlView] window] isKeyWindow])
 			{
-				[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor]
-						 forKey: NSBackgroundColorAttributeName];
+				dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightActiveColor];
 				
 				[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextActiveColor]
 							 range: [view selectedRange]];
 			}
 			else
 			{
-				[dict setObject: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor]
-						 forKey: NSBackgroundColorAttributeName];
+				dict[NSBackgroundColorAttributeName] = [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionHighlightInActiveColor];
 				
 				[view setTextColor: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] selectionTextInActiveColor]
 							 range: [view selectedRange]];
@@ -253,14 +251,12 @@
 		[style setAlignment: [self alignment]];
 		
 		//Attributed string doesn't exist lets create it
-		NSDictionary *attribs = [[NSDictionary alloc] initWithObjectsAndKeys: 
-								 [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor] , NSForegroundColorAttributeName, 
-								 style, NSParagraphStyleAttributeName, nil];
+		NSDictionary *attribs = @{NSForegroundColorAttributeName: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] placeholderTextColor], 
+								 NSParagraphStyleAttributeName: style};
 		
-		[style release];
 		
 		//Set it
-		[self setPlaceholderAttributedString: [[[NSAttributedString alloc] initWithString: [self placeholderString] attributes: [attribs autorelease]] autorelease]];
+		[self setPlaceholderAttributedString: [[NSAttributedString alloc] initWithString: [self placeholderString] attributes: attribs]];
 	} else if([self placeholderAttributedString] && [[self placeholderAttributedString] length] > 0) {
 		
 		// Check to see if the proper styles have been applied
@@ -281,8 +277,6 @@
 			[self setPlaceholderAttributedString: adjPlaceholder];
 			
 			// Cleanup
-			[style release];
-			[adjPlaceholder release];
 		}
 	}
 	
@@ -333,11 +327,6 @@
 #pragma mark -
 #pragma mark Helper Methods
 
--(void)dealloc {
-	
-	[themeKey release];
-	[super dealloc];
-}
 
 #pragma mark -
 

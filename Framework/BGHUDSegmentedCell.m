@@ -151,7 +151,6 @@
 	
 	[NSGraphicsContext restoreGraphicsState];
 	
-	[border release];
 	
 	int segCount = 0;
 	
@@ -241,7 +240,6 @@
 	}
 	
 	[gradient drawInBezierPath: fillPath angle: 90];
-	[fillPath release];
 	
 	//Draw Segment dividers ONLY if they are
 	//inside segments
@@ -283,7 +281,6 @@
 		newTitle = [[NSAttributedString alloc] initWithString: @"" attributes: textAttributes];
 	}
 	
-	[textAttributes release];
 	//}
 	
 	NSRect textRect = rect;
@@ -337,7 +334,6 @@
 		[newTitle drawInRect: textRect];
 	}
 	
-	[newTitle release];
 }
 
 -(BOOL)hasText {
@@ -364,12 +360,6 @@
 
 - (BOOL)_isSliderStyle {
     return NO;
-}
-
--(void)dealloc {
-	
-	[themeKey release];
-	[super dealloc];
 }
 
 @end

@@ -106,17 +106,11 @@
                       range: NSMakeRange(0, [value length])];
 
         [self setAttributedStringValue: value];
-        [value release];
     }
     //--End of modifications
 	
 	[super drawRect: rect];
 }
 
--(void)dealloc {
-	
-	[themeKey release];
-	[super dealloc];
-}
 
 @end

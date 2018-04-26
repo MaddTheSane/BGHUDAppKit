@@ -625,7 +625,9 @@
 		C056398008A954F8003078D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -651,6 +653,10 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				INFOPLIST_FILE = "Framework/BGHUDAppKitFramework-Info.plist";
+				OTHER_LDFLAGS = (
+					"-seg1addr",
+					0xb0440100,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.binarymethod.BGHUDAppKit;
 				PRODUCT_NAME = BGHUDAppKit;
 			};
@@ -659,7 +665,9 @@
 		C056398108A954F8003078D8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -669,6 +677,10 @@
 				GCC_WARN_MISSING_PARENTHESES = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				INFOPLIST_FILE = "Framework/BGHUDAppKitFramework-Info.plist";
+				OTHER_LDFLAGS = (
+					"-seg1addr",
+					0xb0000000,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.binarymethod.BGHUDAppKit;
 				PRODUCT_NAME = BGHUDAppKit;
 				SEPARATE_STRIP = YES;

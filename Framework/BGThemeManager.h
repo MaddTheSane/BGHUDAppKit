@@ -41,7 +41,7 @@
 	NSMutableDictionary *themes;
 }
 
-+ (BGThemeManager *)keyedManager;
++ (instancetype)keyedManager;
 -(void)initDefaultThemes;
 - (BGTheme *)themeForKey:(NSString *)key;
 - (void)setTheme:(BGTheme *)theme forKey:(NSString *)key;

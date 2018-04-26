@@ -37,20 +37,15 @@
 
 @implementation BGThemeManager
 
-static BGThemeManager *sharedThemeManager = nil;
-
 + (BGThemeManager *)keyedManager;
 {
-    if (sharedThemeManager == nil) {
-        sharedThemeManager = [[super allocWithZone:NULL] init];
-		[sharedThemeManager initDefaultThemes];
-    }
-    return sharedThemeManager;
-}
-
-+ (id)allocWithZone:(NSZone *)zone;
-{
-    return [[self keyedManager] retain];
+    static BGThemeManager* sharedMyManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedMyManager = [[BGThemeManager alloc] init];
+		[sharedMyManager initDefaultThemes];
+    });
+    return sharedMyManager;
 }
 
 -(void)initDefaultThemes {
@@ -59,21 +54,21 @@ static BGThemeManager *sharedThemeManager = nil;
 	themes = [[NSMutableDictionary alloc] initWithCapacity: 2];
 	
 	//Add the default Flat and Gradient themes
-	[themes setObject: [[[BGTheme alloc] init] autorelease] forKey: @"flatTheme"];
-	[themes setObject: [[[BGGradientTheme alloc] init] autorelease] forKey: @"gradientTheme"];
+	themes[@"flatTheme"] = [[BGTheme alloc] init];
+	themes[@"gradientTheme"] = [[BGGradientTheme alloc] init];
 }
 
 - (BGTheme *)themeForKey:(NSString *)key {
 
 	//Make sure the key exists before we try to
 	//return it
-	if([themes objectForKey: key]) {
+	if(themes[key]) {
 
-		return [themes objectForKey: key];
+		return themes[key];
 	} else {
 
 		//Return the default gradient key
-		return [themes objectForKey: @"gradientTheme"];
+		return themes[@"gradientTheme"];
 	}
 	
 	
@@ -81,27 +76,7 @@ static BGThemeManager *sharedThemeManager = nil;
 
 - (void)setTheme:(BGTheme *)theme forKey:(NSString *)key {
 	
-	[themes setObject: theme forKey: key];
-}
-
-- (id)copyWithZone:(NSZone *)zone; {
-    return self;
-}
-
-- (id)retain; {
-    return self;
-}
-
-- (NSUInteger)retainCount; {
-    return NSUIntegerMax;  //denotes an object that cannot be released
-}
-
-- (oneway void)release; {
-    //do nothing
-}
-
-- (id)autorelease; {
-    return self;
+	themes[key] = theme;
 }
 
 @end
