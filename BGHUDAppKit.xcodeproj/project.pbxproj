@@ -555,13 +555,13 @@
 			};
 			buildConfigurationList = C056398B08A954F8003078D8 /* Build configuration list for PBXProject "BGHUDAppKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				ja,
+				en,
+				fr,
+				de,
 			);
 			mainGroup = 0259C574FE90428111CA0C5A /* BGHUDAppKit */;
 			projectDirPath = "";
