@@ -97,8 +97,17 @@
 	
 	//Make Adjustments to Frame based on Cell Size
 	switch ([self controlSize]) {
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
 			
-		case NSRegularControlSize:
+			frame.origin.x += 3;
+			frame.size.width -= 7;
+			frame.origin.y += 2;
+			frame.size.height -= 7;
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			frame.origin.x += 3;
 			frame.size.width -= 7;
@@ -106,7 +115,7 @@
 			frame.size.height -= 7;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			frame.origin.y += 1;
 			frame.size.height -= 6;
@@ -114,7 +123,7 @@
 			frame.size.width -= 7;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.origin.x += 1;
 			frame.size.width -= 4;
@@ -155,22 +164,30 @@
 	
 	//Adjust rect for title drawing
 	switch ([self controlSize]) {
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
 			
-		case NSRegularControlSize:
+			frame.origin.x += 8;
+			frame.origin.y += 1;
+			frame.size.width -= 30;
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			frame.origin.x += 8;
 			frame.origin.y += 1;
 			frame.size.width -= 29;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			frame.origin.x += 8;
 			frame.origin.y += 2;
 			frame.size.width -= 29;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.origin.x += 8;
 			frame.origin.y += .5f;
@@ -231,18 +248,24 @@
 	   }*/
 	
 	switch ([self controlSize]) {
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
 			
-		case NSRegularControlSize:
+			arrowAdjustment = 24;
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			arrowAdjustment = 21;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			arrowAdjustment = 18;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			arrowAdjustment = 15;
 			break;
@@ -387,7 +410,7 @@
 	//Adjust based on Control size
 	switch ([self controlSize]) {
 		default: // Silence uninitialized variable warnings
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			if([self isBordered]) {
 				
@@ -403,7 +426,7 @@
 			arrowsWidth = 2.5f;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			if([self isBordered]) {
 				
@@ -420,7 +443,7 @@
 			
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			if([self isBordered]) {
 				

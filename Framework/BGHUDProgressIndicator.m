@@ -90,26 +90,36 @@
 	//Adjust rect based on size
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			//TODO: test when Big Sur gets released
+			frame.origin.x += 4;
+			frame.origin.y += 1;
+			frame.size.width -= 7;
+			frame.size.height -= 9;
+			break;
+#endif
 			
-			frame.origin.x += 2.5f;
-			frame.origin.y += .5f;
+		case NSControlSizeRegular:
+			
+			frame.origin.x += 2.5;
+			frame.origin.y += .5;
 			frame.size.width -= 5;
 			frame.size.height -= 5;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
-			frame.origin.x += 0.5f;
-			frame.origin.y += 0.5f;
+			frame.origin.x += 0.5;
+			frame.origin.y += 0.5;
 			frame.size.width -= 1;
 			frame.size.height -= 3;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
-			frame.origin.x += 1.5f;
-			frame.origin.y += 0.5f;
+			frame.origin.x += 1.5;
+			frame.origin.y += 0.5;
 			frame.size.width -= 3;
 			frame.size.height -= 5;
 			break;
@@ -167,26 +177,36 @@
 	//Adjust rect based on size
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			//TODO: test when Big Sur gets released
+			frame.origin.x += 4;
+			frame.origin.y += 1;
+			frame.size.width -= 7;
+			frame.size.height -= 9;
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
-			frame.origin.x += 2.5f;
-			frame.origin.y += .5f;
+			frame.origin.x += 2.5;
+			frame.origin.y += .5;
 			frame.size.width -= 5;
 			frame.size.height -= 5;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
-			frame.origin.x += 0.5f;
-			frame.origin.y += 0.5f;
+			frame.origin.x += 0.5;
+			frame.origin.y += 0.5;
 			frame.size.width -= 1;
 			frame.size.height -= 3;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
-			frame.origin.x += 1.5f;
-			frame.origin.y += 0.5f;
+			frame.origin.x += 1.5;
+			frame.origin.y += 0.5;
 			frame.size.width -= 3;
 			frame.size.height -= 5;
 			break;

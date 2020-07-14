@@ -336,19 +336,24 @@
 	//my controls match as closely to apples
 	//as possible.
 	switch ([self controlSize]) {
-			
-		case NSRegularControlSize:
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			frame.origin.y += 3;
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			frame.origin.y += 1;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			//frame.origin.y += 3;
 			//frame.size.height += 2;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			//frame.origin.y += 5;
 			//frame.size.height += 1;
@@ -439,18 +444,24 @@
 	//my controls match as closely to apples
 	//as possible.
 	switch ([self controlSize]) {
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
 			
-		case NSRegularControlSize:
+			frame.size.height -= 1;
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			frame.size.height -= 3;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			frame.size.height -= 3;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.origin.y += 1;
 			frame.size.height -= 5;
@@ -626,7 +637,7 @@
 	//as possible.
 	switch ([self controlSize]) {
 		default: // Silence uninitialized variable warnings for textFrame fields.
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			frame.origin.x += 4;
 			frame.origin.y += 4;
@@ -636,7 +647,7 @@
 			textFrame = frame;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			frame.origin.x += 4;
 			frame.origin.y += 4;
@@ -647,7 +658,7 @@
 			textFrame.origin.y += 1;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.origin.y -= 1;
 			
@@ -739,13 +750,13 @@
 	
 	//Make adjustments based on ControlSize
 	//Set checkbox size
-	if([self controlSize] == NSRegularControlSize) {
+	if([self controlSize] == NSControlSizeRegular) {
 		
 		innerRect.size.height = 12;
 		innerRect.size.width = 13;
 		innerRect.origin.y += 2;
 		
-	} else if([self controlSize] == NSSmallControlSize) {
+	} else if([self controlSize] == NSControlSizeSmall) {
 		
 		innerRect.size.height = 10;
 		innerRect.size.width = 11;
@@ -771,14 +782,14 @@
 			
 			//Make adjustments to horizontal placement
 			//Create Text Rect so text is drawn properly
-			if([self controlSize] == NSRegularControlSize) {
+			if([self controlSize] == NSControlSizeRegular) {
 				
 				innerRect.origin.x += 2;
 				textRect.size.width -= (NSMaxX(innerRect) + 5);
 				textRect.origin.x = (NSMaxX(innerRect) + 5);
 				textRect.origin.y -= 2;
 				
-			} else if([self controlSize] == NSSmallControlSize) {
+			} else if([self controlSize] == NSControlSizeSmall) {
 				
 				innerRect.origin.x += 3;
 				textRect.size.width -= (NSMaxX(innerRect) + 6);
@@ -798,10 +809,10 @@
 			
 			//Adjust slightly so lines draw true, and center really is
 			//center
-			if([self controlSize] == NSRegularControlSize) {
+			if([self controlSize] == NSControlSizeRegular) {
 				
 				innerRect.origin.x -= .5f;
-			} else if([self controlSize] == NSMiniControlSize) {
+			} else if([self controlSize] == NSControlSizeMini) {
 				
 				innerRect.origin.x += .5f;
 			}
@@ -812,14 +823,14 @@
 		case NSImageTrailing:
 		case NSImageRight:
 			
-			if([self controlSize] == NSRegularControlSize) {
+			if([self controlSize] == NSControlSizeRegular) {
 				
 				innerRect.origin.x = (NSWidth(frame) - NSWidth(innerRect) - 1.5f) ;
 				textRect.origin.x += 2;
 				textRect.size.width = (NSMinX(innerRect) - NSMinX(textRect) - 5);
 				textRect.origin.y -= 2;
 				
-			} else if([self controlSize] == NSSmallControlSize) {
+			} else if([self controlSize] == NSControlSizeSmall) {
 				
 				innerRect.origin.x = (NSWidth(frame) - NSWidth(innerRect) - 1.5f);
 				textRect.origin.x += 2;
@@ -931,20 +942,27 @@
 			
 			if(radio) {
 				
-				if([self controlSize] == NSRegularControlSize) {
+				if([self controlSize] == NSControlSizeRegular) {
 					
 					innerRect.origin.x += 4;
 					innerRect.origin.y += 4;
 					innerRect.size.width -= 8;
 					innerRect.size.height -= 8;
 					
-				} else if([self controlSize] == NSSmallControlSize) {
+				} else if([self controlSize] == NSControlSizeSmall) {
 					
-					innerRect.origin.x += 3.5f;
-					innerRect.origin.y += 3.5f;
+					innerRect.origin.x += 3.5;
+					innerRect.origin.y += 3.5;
 					innerRect.size.width -= 7;
 					innerRect.size.height -= 7;
 					
+				} else if([self controlSize] == 3) {
+					
+					innerRect.origin.x += 5.5;
+					innerRect.origin.y += 5.5;
+					innerRect.size.width -= 9;
+					innerRect.size.height -= 9;
+
 				} else {
 					
 					innerRect.origin.x += 3;
@@ -985,7 +1003,7 @@
 					[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
 				}
 				
-				if([self controlSize] == NSMiniControlSize) {
+				if([self controlSize] == NSControlSizeMini) {
 					
 					[path setLineWidth: 1.5f];
 				} else {
@@ -1023,7 +1041,7 @@
 	//as possible.
 	switch ([self controlSize]) {
 		default: // Silence uninitialized variable warnings for textFrame fields.
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			frame.origin.x += 1;
 			frame.origin.y += 1;
@@ -1033,7 +1051,7 @@
 			textFrame = frame;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			frame.origin.x += 1;
 			frame.origin.y += 1;
@@ -1044,7 +1062,7 @@
 			textFrame.origin.y += 1;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.origin.y -= 1;
 			

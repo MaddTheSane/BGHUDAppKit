@@ -75,7 +75,7 @@
 	
 	switch ([self controlSize]) {
 		
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			fp8.size.height = 14;
 			
@@ -89,7 +89,7 @@
 			
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 
 			fp8.size.height = 12;
 			
@@ -103,14 +103,30 @@
 			
 			break;
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			//Do nothing
 			break;
+			
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			//TODO: test when Big Sur gets released
+			fp8.size.height = 18;
+			
+			[newTitle beginEditing];
+			[newTitle addAttribute: NSFontAttributeName
+							 value: [NSFont controlContentFontOfSize: 15.0]
+							 range: NSMakeRange(0, [newTitle length])];
+			[newTitle endEditing];
+			
+			textRect.origin.y += 4;
+
+			break;
+#endif
 	}
 	
 	[super drawTokenWithFrame: fp8 inView: fp24];
 	
-	if([self controlSize] == NSRegularControlSize) {
+	if([self controlSize] == NSControlSizeRegular) {
 		
 		[super drawInteriorWithFrame: fp8 inView: fp24];
 	} else {

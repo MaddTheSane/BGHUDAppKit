@@ -223,7 +223,7 @@
 	//Adjust Frame so Text Draws correctly
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			if([self bezelStyle] != NSTextFieldRoundedBezel) {
 				
@@ -231,7 +231,7 @@
 			}
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			if([self bezelStyle] == NSTextFieldRoundedBezel) {
 				
@@ -239,7 +239,7 @@
 			}
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			if([self bezelStyle] == NSTextFieldRoundedBezel) {
 				

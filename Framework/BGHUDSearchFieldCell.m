@@ -34,7 +34,7 @@
 
 #import "BGHUDSearchFieldCell.h"
 
-// TODO: Find out why NSSmallControlSize/NSMiniControlSize revert to original dark images
+// TODO: Find out why NSControlSizeSmall/NSControlSizeMini revert to original dark images
 NSImage *searchButtonImage() {
 	
     static NSImage *__image = nil;
@@ -115,11 +115,11 @@ NSImage *cancelButtonImageUp() {
 		[[self cancelButtonCell] setImage:cancelButtonImageUp()];
 		[[self cancelButtonCell] setAlternateImage:nil];
 		
-		if([self controlSize] == NSSmallControlSize) {
+		if([self controlSize] == NSControlSizeSmall) {
 			
 			[[[self searchButtonCell] image] setSize: NSMakeSize(12, 12)];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(12, 12)];
-		} else if ([self controlSize] == NSMiniControlSize) {
+		} else if ([self controlSize] == NSControlSizeMini) {
 			
 			[[[self searchButtonCell] image] setSize: NSMakeSize(10, 10)];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(10, 10)];
@@ -148,11 +148,11 @@ NSImage *cancelButtonImageUp() {
 		[[self cancelButtonCell] setImage:cancelButtonImageUp()];
 		[[self cancelButtonCell] setAlternateImage:nil];
 		
-		if([self controlSize] == NSSmallControlSize) {
+		if([self controlSize] == NSControlSizeSmall) {
 			
 			[[[self searchButtonCell] image] setSize: NSMakeSize(12, 12)];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(12, 12)];
-		} else if ([self controlSize] == NSMiniControlSize) {
+		} else if ([self controlSize] == NSControlSizeMini) {
 			
 			[[[self searchButtonCell] image] setSize: NSMakeSize(10, 10)];
 			[[[self cancelButtonCell] image] setSize: NSMakeSize(10, 10)];
@@ -278,12 +278,12 @@ NSImage *cancelButtonImageUp() {
 	//Adjust Frame so Text Draws correctly
 	switch ([self controlSize]) {
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			cellFrame.origin.y += 1;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			cellFrame.origin.y += 1;
 			
@@ -298,19 +298,19 @@ NSImage *cancelButtonImageUp() {
 	
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			cellFrame.origin.x += 5;
 			cellFrame.size.width -= 5;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			cellFrame.origin.x += 1;
 			cellFrame.size.width -= 3;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			//cellFrame.origin.x += 5;
 			//cellFrame.size.width -= 5;
@@ -330,19 +330,19 @@ NSImage *cancelButtonImageUp() {
 	
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			nRect.origin.x -= 5;
 			nRect.origin.y -= 1;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			nRect.origin.x -= 1;
 			nRect.origin.y -= 2;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			nRect.origin.x -= 2;
 			nRect.origin.y -= 2;
@@ -363,18 +363,18 @@ NSImage *cancelButtonImageUp() {
 	
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			nRect.origin.y -= 1;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			nRect.origin.y -= 1.5;
 			nRect.origin.x += 2;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			nRect.origin.y -= 2;
 			break;
@@ -396,25 +396,25 @@ NSImage *cancelButtonImageUp() {
     return textObj;
 }
 
-// TODO: Add proper sizeing for NSSmallControlSize/NSMiniControlSize
+// TODO: Add proper sizeing for NSControlSizeSmall/NSControlSizeMini
 // Change Editing Text Rect
 - (void)editWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject event:(NSEvent *)theEvent {
 	
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			aRect.origin.x += 5;
 			aRect.size.width -= 5;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			aRect.origin.x += 1;
 			aRect.size.width -= 3;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			//aRect.origin.x += 5;
 			//aRect.size.width -= 5;
@@ -427,25 +427,25 @@ NSImage *cancelButtonImageUp() {
 	[super editWithFrame: aRect inView: controlView editor: textObj delegate: anObject event: theEvent];
 }
 
-// TODO: Add proper sizeing for NSSmallControlSize/NSMiniControlSize
+// TODO: Add proper sizeing for NSControlSizeSmall/NSControlSizeMini
 // Chnage the Selected Text Rect
 - (void)selectWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject start:(NSInteger)selStart length:(NSInteger)selLength {
 	
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			aRect.origin.x += 5;
 			aRect.size.width -= 5;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			aRect.origin.x += 1;
 			aRect.size.width -= 3;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			//aRect.origin.x += 5;
 			//aRect.size.width -= 5;
@@ -462,11 +462,11 @@ NSImage *cancelButtonImageUp() {
 
 	[super setControlSize: size];
 	
-	if([self controlSize] == NSSmallControlSize) {
+	if([self controlSize] == NSControlSizeSmall) {
 		
 		[[[self searchButtonCell] image] setSize: NSMakeSize(12, 12)];
 		[[[self cancelButtonCell] image] setSize: NSMakeSize(12, 12)];
-	} else if ([self controlSize] == NSMiniControlSize) {
+	} else if ([self controlSize] == NSControlSizeMini) {
 		
 		[[[self searchButtonCell] image] setSize: NSMakeSize(10, 10)];
 		[[[self cancelButtonCell] image] setSize: NSMakeSize(10, 10)];

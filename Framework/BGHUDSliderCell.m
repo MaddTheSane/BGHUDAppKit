@@ -137,8 +137,12 @@
     frame = [self controlView].bounds;
 	// Adjust frame based on ControlSize
 	switch ([self controlSize]) {
-			
-		case NSRegularControlSize:
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -160,7 +164,7 @@
 			frame.size.height = 5;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -182,7 +186,7 @@
 			frame.size.height = 5;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -230,8 +234,13 @@
     frame = [self controlView].bounds;
 	//Vertical Scroller
 	switch ([self controlSize]) {
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			break;
+#endif
+
 			
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -253,7 +262,7 @@
 			frame.size.width = 5;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -276,7 +285,7 @@
 			frame.size.width = 5;
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -315,7 +324,11 @@
 	
 	switch ([self controlSize]) {
 			
-		case NSRegularControlSize:
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			break;
+#endif
+		case NSControlSizeRegular:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -336,7 +349,7 @@
 			}
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -357,7 +370,7 @@
 			}
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -490,8 +503,31 @@
 - (void)drawVerticalKnobInFrame:(NSRect)frame {
 	
 	switch ([self controlSize]) {
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
 			
-		case NSRegularControlSize:
+			if([self numberOfTickMarks] != 0) {
+				
+				if([self tickMarkPosition] == NSTickMarkRight) {
+					
+					frame.origin.x -= 3;
+				}
+				
+				frame.origin.x += 3;
+				frame.origin.y += 2;
+				frame.size.height = 15;
+				frame.size.width = 19;
+			} else {
+				
+				frame.origin.x += 3;
+				frame.origin.y += 3;
+				frame.size.height = 15;
+				frame.size.width = 15;
+			}
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -513,7 +549,7 @@
 			}
 			break;
 			
-			case NSSmallControlSize:
+			case NSControlSizeSmall:
 			
 			if([self numberOfTickMarks] != 0) {
 				
@@ -530,7 +566,7 @@
 			}
 			break;
 			
-			case NSMiniControlSize:
+			case NSControlSizeMini:
 			
 			if([self numberOfTickMarks] != 0) {
 				

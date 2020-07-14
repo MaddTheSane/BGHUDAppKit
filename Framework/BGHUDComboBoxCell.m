@@ -152,18 +152,24 @@
 	
 	//Adjust based on Control size
 	switch ([self controlSize]) {
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
 			
-		case NSRegularControlSize:
+			frame.size.width = (frame.size.width -24);
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			frame.size.width = (frame.size.width -21);
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			frame.size.width = (frame.size.width - 18);
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.size.width += (frame.size.width - 15);			
 			break;
@@ -212,21 +218,27 @@
 	
 	//Adjust based on Control size
 	switch ([self controlSize]) {
-			
-		case NSRegularControlSize:
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+			frame.origin.x += (frame.size.width -24);
+			frame.size.width = 24;
+			break;
+#endif
+
+		case NSControlSizeRegular:
 			
 			frame.origin.x += (frame.size.width -20);
 			frame.size.width = 20;
 			break;
 			
-		case NSSmallControlSize:
+		case NSControlSizeSmall:
 			
 			frame.origin.x += (frame.size.width -17);
 			frame.size.width = 17;
 				
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.origin.x += (frame.size.width - 14);
 			frame.size.width = 14;
@@ -256,7 +268,7 @@
 	//Adjust based on Control size
 	switch ([self controlSize]) {
 		default: // Silence uninitialized variable warnings
-		case NSRegularControlSize:
+		case NSControlSizeRegular:
 			
 			frame.origin.x += (frame.size.width -21);
 			frame.size.width = 21;
@@ -265,7 +277,19 @@
 			arrowHeight = 2.5f;
 			break;
 			
-		case NSSmallControlSize:
+#if defined(__MAC_11_0)
+		case NSControlSizeLarge:
+
+			frame.origin.x += (frame.size.width -24);
+			frame.size.width = 24;
+			
+			arrowWidth = 5.5;
+			arrowHeight = 3.5;
+			break;
+#endif
+
+			
+		case NSControlSizeSmall:
 			
 			frame.origin.x += (frame.size.width -18);
 			frame.size.width = 18;
@@ -275,7 +299,7 @@
 			
 			break;
 			
-		case NSMiniControlSize:
+		case NSControlSizeMini:
 			
 			frame.origin.x += (frame.size.width - 15);
 			frame.size.width = 15;
